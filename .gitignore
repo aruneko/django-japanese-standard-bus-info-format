@@ -1,7 +1,9 @@
 .idea/
 .venv/
+__pycache__/
 settings/
 manage.py
+db.sqlite3
 
 ### macOS ###
 # General
