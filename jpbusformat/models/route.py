@@ -62,7 +62,7 @@ class Route(models.Model):
 
         routes = [
             Route(
-                route_id=d.get("route_id"),
+                id=d.get("route_id"),
                 agency=agencies.get(d.get("agency_id")),
                 short_name=d.get("short_name"),
                 long_name=d.get("long_name"),

@@ -35,7 +35,7 @@ class Agency(models.Model):
         csv_lines = open_csv(file_path, cls._column_dict)
         agencies = [
             Agency(
-                agency_id=d.get("id"),
+                id=d.get("id"),
                 name=d.get("name"),
                 url=d.get("url"),
                 timezone=d.get("timezone"),

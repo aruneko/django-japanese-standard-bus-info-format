@@ -32,7 +32,7 @@ class Shape(models.Model):
         grouped_lines = groupby(csv_lines, key=lambda d: d["shape_id"])
         shapes = [
             Shape(
-                shape_id=k,
+                id=k,
                 line=LineString(
                     [
                         _create_point(l)

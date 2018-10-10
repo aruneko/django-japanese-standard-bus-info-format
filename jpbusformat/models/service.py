@@ -37,7 +37,7 @@ class Service(models.Model):
 
         services = [
             Service(
-                service_id=d.get("service_id"),
+                id=d.get("service_id"),
                 monday=Converter(d.get("monday")).to_bool(),
                 tuesday=Converter(d.get("tuesday")).to_bool(),
                 wednesday=Converter(d.get("wednesday")).to_bool(),

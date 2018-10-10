@@ -25,7 +25,7 @@ class Office(models.Model):
 
         offices = [
             Office(
-                office_id=d.get("office_id"),
+                id=d.get("office_id"),
                 name=d.get("name"),
                 url=Converter(d.get("url")).opt_str(),
                 phone=Converter(d.get("phone")).opt_str(),

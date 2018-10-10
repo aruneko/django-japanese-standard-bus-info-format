@@ -72,7 +72,7 @@ class Trip(models.Model):
             Trip(
                 route=routes[d.get("route_id")],
                 service=services[d.get("service_id")],
-                trip_id=d.get("trip_id"),
+                id=d.get("trip_id"),
                 headsign=Converter(d.get("headsign")).opt_str(),
                 short_name=Converter(d.get("short_name")).opt_str(),
                 direction_id=Converter(d.get("direction_id")).opt_int(),

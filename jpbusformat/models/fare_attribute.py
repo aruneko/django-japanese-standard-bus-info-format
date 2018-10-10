@@ -39,7 +39,7 @@ class FareAttribute(models.Model):
 
         fare_attributes = [
             FareAttribute(
-                fare_id=d.get("id"),
+                id=d.get("id"),
                 price=Converter(d.get("price")).to_int(),
                 currency_type=d.get("currency_type"),
                 payment_method=Converter(d.get("payment_method")).to_int(),
