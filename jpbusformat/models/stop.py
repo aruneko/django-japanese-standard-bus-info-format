@@ -64,7 +64,7 @@ class Stop(models.Model):
 
         parent_stops = [
             Stop(
-                stop_id=d.get("stop_id"),
+                id=d.get("stop_id"),
                 code=Converter(d.get("code")).opt_str(),
                 name=d.get("name"),
                 desc=Converter(d.get("desc")).opt_str(),
