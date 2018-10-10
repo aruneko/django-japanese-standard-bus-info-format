@@ -23,7 +23,7 @@ class Translation(models.Model):
 
         translations = [
             Translation(
-                trans_id=d.get("trans_id"),
+                id=d.get("trans_id"),
                 lang=d.get("lang"),
                 translation=d.get("translation"),
             )
