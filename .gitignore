@@ -1,5 +1,7 @@
 .idea/
 .venv/
+settings/
+manage.py
 
 ### macOS ###
 # General
