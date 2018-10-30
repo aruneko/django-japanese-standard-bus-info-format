@@ -6,7 +6,7 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class RouteJP(models.Model):
-    route = models.ForeignKey("Route", on_delete=models.CASCADE)
+    route = models.ForeignKey("Route", on_delete=models.CASCADE, related_name="route")
     update_date = models.DateField(blank=True, null=True, help_text="ダイヤ改正日")
     origin_stop = models.CharField(
         max_length=256, blank=True, null=True, help_text="起点"
