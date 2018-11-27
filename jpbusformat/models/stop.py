@@ -16,13 +16,15 @@ class Stop(models.Model):
         max_length=256, blank=True, null=True, help_text="停留所・標柱付加情報"
     )
     point = models.PointField(help_text="座標")
-    zone = models.ForeignKey("Zone", blank=True, null=True, on_delete=models.SET_NULL)
+    zone = models.ForeignKey(
+        "Zone", related_name="stops", blank=True, null=True, on_delete=models.SET_NULL
+    )
     url = models.URLField(blank=True, null=True, help_text="停留所・標柱URL")
     location_type = models.IntegerField(
         blank=True, null=True, choices=((0, "標柱"), (1, "停留所")), help_text="停留所・標柱区分"
     )
     parent_station = models.ForeignKey(
-        "Stop", blank=True, null=True, on_delete=models.SET_NULL
+        "Stop", related_name="stops", blank=True, null=True, on_delete=models.SET_NULL
     )
     timezone = models.CharField(
         max_length=32, blank=True, null=True, help_text="タイムゾーン"

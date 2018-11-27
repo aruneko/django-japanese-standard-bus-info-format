@@ -8,7 +8,11 @@ from jpbusformat.utils import open_csv, Converter
 class Route(models.Model):
     id = models.CharField(max_length=256, primary_key=True, help_text="経路ID")
     agency = models.ForeignKey(
-        "Agency", blank=True, null=True, on_delete=models.SET_NULL
+        "Agency",
+        related_name="routes",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
     short_name = models.CharField(max_length=256, help_text="経路略称")
     long_name = models.CharField(max_length=256, help_text="経路名")

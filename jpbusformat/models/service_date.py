@@ -6,7 +6,9 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class ServiceDate(models.Model):
-    service = models.ForeignKey("Service", on_delete=models.CASCADE)
+    service = models.ForeignKey(
+        "Service", related_name="service_dates", on_delete=models.CASCADE
+    )
     date = models.DateField(help_text="日付")
     exception_type = models.IntegerField(
         choices=((1, "適用"), (2, "非適用")), help_text="運行区分"

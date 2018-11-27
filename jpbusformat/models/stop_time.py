@@ -6,10 +6,14 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class StopTime(models.Model):
-    trip = models.ForeignKey("Trip", on_delete=models.CASCADE)
+    trip = models.ForeignKey(
+        "Trip", related_name="stop_times", on_delete=models.CASCADE
+    )
     arrival_time = models.TimeField(help_text="到着時刻")
     departure_time = models.TimeField(help_text="出発時刻")
-    stop = models.ForeignKey("Stop", on_delete=models.CASCADE)
+    stop = models.ForeignKey(
+        "Stop", related_name="stop_times", on_delete=models.CASCADE
+    )
     sequence = models.IntegerField(help_text="通過順序")
     headsign = models.CharField(
         max_length=256, blank=True, null=True, help_text="停留所行先"

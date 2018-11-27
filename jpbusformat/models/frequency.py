@@ -6,7 +6,7 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class Frequency(models.Model):
-    trip = models.ForeignKey("Trip", on_delete=models.CASCADE)
+    trip = models.OneToOneField("Trip", related_name="trip", on_delete=models.CASCADE)
     start_time = models.TimeField(help_text="開始時刻")
     end_time = models.TimeField(help_text="終了時刻")
     headway_secs = models.IntegerField(help_text="運行間隔")

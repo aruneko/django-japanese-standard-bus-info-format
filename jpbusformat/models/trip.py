@@ -6,9 +6,13 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class Trip(models.Model):
-    route = models.ForeignKey("Route", on_delete=models.CASCADE)
+    route = models.ForeignKey("Route", related_name="trips", on_delete=models.CASCADE)
     service = models.ForeignKey(
-        "Service", blank=True, null=True, on_delete=models.SET_NULL
+        "Service",
+        related_name="trips",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
     id = models.CharField(max_length=256, primary_key=True, help_text="便ID")
     headsign = models.CharField(max_length=256, blank=True, null=True, help_text="便行先")
@@ -21,7 +25,9 @@ class Trip(models.Model):
     block_id = models.CharField(
         max_length=256, blank=True, null=True, help_text="便結合区分"
     )
-    shape = models.ForeignKey("Shape", on_delete=models.SET_NULL, blank=True, null=True)
+    shape = models.ForeignKey(
+        "Shape", related_name="trips", on_delete=models.SET_NULL, blank=True, null=True
+    )
     wheelchair_accessible = models.IntegerField(
         choices=((0, "不明"), (1, "利用可"), (2, "利用不可")),
         blank=True,
@@ -39,7 +45,7 @@ class Trip(models.Model):
         max_length=16, blank=True, null=True, help_text="便記号"
     )
     office = models.ForeignKey(
-        "Office", on_delete=models.SET_NULL, blank=True, null=True
+        "Office", related_name="trips", on_delete=models.SET_NULL, blank=True, null=True
     )
 
     _column_dict = {

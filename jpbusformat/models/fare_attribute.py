@@ -16,7 +16,11 @@ class FareAttribute(models.Model):
         choices=((0, "不可"), (1, "1度だけ可"), (2, "2度だけ可")), help_text="乗換"
     )
     agency = models.ForeignKey(
-        "Agency", blank=True, null=True, on_delete=models.SET_NULL
+        "Agency",
+        related_name="fare_attributes",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
     transfer_duration = models.IntegerField(blank=True, null=True, help_text="乗換有効秒数")
 

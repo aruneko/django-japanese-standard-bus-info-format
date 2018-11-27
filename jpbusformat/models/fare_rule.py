@@ -6,15 +6,19 @@ from jpbusformat.utils import open_csv, Converter
 
 
 class FareRule(models.Model):
-    fare = models.ForeignKey("FareAttribute", on_delete=models.CASCADE)
-    route = models.ForeignKey("Route", on_delete=models.CASCADE)
+    fare = models.ForeignKey(
+        "FareAttribute", related_name="fare_rules", on_delete=models.CASCADE
+    )
+    route = models.ForeignKey(
+        "Route", related_name="fare_rules", on_delete=models.CASCADE
+    )
     origin = models.ForeignKey(
         "Zone",
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
         help_text="乗車地ゾーン",
-        related_name="origin_zones",
+        related_name="origin_fare_rules",
     )
     destination = models.ForeignKey(
         "Zone",
@@ -22,7 +26,7 @@ class FareRule(models.Model):
         blank=True,
         null=True,
         help_text="降車地ゾーン",
-        related_name="destination_zones",
+        related_name="destination_fare_rules",
     )
     contains = models.ForeignKey(
         "Zone",
@@ -30,7 +34,7 @@ class FareRule(models.Model):
         blank=True,
         null=True,
         help_text="通過ゾーン",
-        related_name="contains_zones",
+        related_name="contains_fare_rules",
     )
 
     _column_dict = {
