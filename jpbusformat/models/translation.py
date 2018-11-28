@@ -6,7 +6,7 @@ from jpbusformat.utils import open_csv
 
 
 class Translation(models.Model):
-    id = models.CharField(max_length=256, primary_key=True, help_text="翻訳元日本語")
+    trans_id = models.CharField(max_length=256, help_text="翻訳元日本語")
     lang = models.CharField(max_length=8, help_text="言語")
     translation = models.CharField(max_length=256, help_text="翻訳先言語")
 
@@ -23,7 +23,7 @@ class Translation(models.Model):
 
         translations = [
             Translation(
-                id=d.get("trans_id"),
+                trans_id=d.get("trans_id"),
                 lang=d.get("lang"),
                 translation=d.get("translation"),
             )
